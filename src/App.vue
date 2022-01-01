@@ -1,12 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <!-- <Home/> -->
+    <!-- <pdf src="sidur.pdf" :page="54"/> -->
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import Home from './views/Home.vue'
+import pdf from 'vue-pdf'
+
+var loadingTask = pdf.createLoadingTask('sidur.pdf');
+
+export default{
+  name:'app',
+  components:{
+    pdf,Home
+  },
+ 
+}
+
+</script>
+
 
 <style lang="scss">
 #app {

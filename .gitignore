@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+sidur.pdf
+.history
 
 # local env files
 .env.local
