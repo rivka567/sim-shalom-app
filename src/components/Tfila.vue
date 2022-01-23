@@ -88,6 +88,5 @@ export default Vue.extend({
   width: 20%;
   padding: 30px;
 }
-.header {
-}
+
 </style>
