@@ -76,14 +76,19 @@ import Vue from 'vue'
 <style>
 
 #nav {
-  position: absolute;
-  top: 10%;
-  left: 40%;
+  /* position: absolute; */
+  /* top: 10%; */
+  /* left: 40%; */
   background-color: rgb(154, 149, 149);
   margin: 0 auto;
-  width: 17%;
+  /* width: 100%; */
+  min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
   padding: 30px;
  border-radius: 3%;
+ box-sizing: border-box;
  
 }
 

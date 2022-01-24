@@ -48,10 +48,10 @@ export default Vue.extend({
   methods: {
     getSubTitle(subTitle:string)
     {
-      alert(subTitle)
+      // alert(subTitle)
      let pageStart=Number(this.selectTfila?.subTitels?.find(f=>f.title==subTitle)?.page)
      this.start=pageStart
-     alert(pageStart)
+    //  alert(pageStart)
     }
   },
   mounted(): void {
@@ -85,7 +85,7 @@ export default Vue.extend({
 #hello {
   background-color: rgb(154, 149, 149);
   margin: 0 auto;
-  width: 20%;
+  /* width: 20%; */
   padding: 30px;
 }
 
