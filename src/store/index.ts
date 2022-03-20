@@ -7,19 +7,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loadingTask: pdf.createLoadingTask('sidur.pdf')
-
+    src:pdf.createLoadingTask("sidur.pdf"),
   },
+
   getters:{
     getPdfSrc(state)
     {
-      return state.loadingTask;
+      return state.src;
     }
   },
+
   mutations: {
   },
+
   actions: {
   },
+  
   modules: {
   }
 })

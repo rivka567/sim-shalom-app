@@ -75,6 +75,7 @@ import Vue from 'vue'
 
 <style>
 
+
 #nav {
   /* position: absolute; */
   /* top: 10%; */
@@ -83,23 +84,19 @@ import Vue from 'vue'
   margin: 0 auto;
   /* width: 100%; */
   min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-  padding: 30px;
- border-radius: 3%;
- box-sizing: border-box;
+/* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 3%;
+    box-sizing: border-box;
  
 }
-
-
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
   height: 100%;
 }
-
 #nav a.router-link-exact-active {
   color: #42b983;
 }
@@ -109,14 +106,16 @@ align-items: center;
 }
 button{
   margin: auto;
-  width:80%;
+  width:60%;
   padding: 10px;
   border: none;
   border-radius: 4px;
   margin: 10px;
   font-size: 16px;
   color:black;
-  
+ 
 }
+
+
 
 </style>

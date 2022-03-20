@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Home from '../views/Home.vue'
 import Tfila from '../components/Tfila.vue'
+import FlipBook from '../components/FlipBook.vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 
 Vue.use(VueRouter)
@@ -17,7 +18,13 @@ const routes: Array<RouteConfig> = [
     component: Tfila,
     props:true
   },
-
+  
+  {
+    path: '/flip-book',
+    name: 'FlipBook',
+    component: FlipBook,
+    props:true
+  },
   
   
 ]

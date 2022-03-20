@@ -1,20 +1,32 @@
 <template>
-  <div id="hello">
+  <div class="container">
+ 
 
     <div class="header">
-      <h1>{{ tfilaTitle }}</h1>
-      <menu-icon @click="showMenu = !showMenu" />
-    </div>
-      <div v-if="showMenu">
-         <div v-for="tfila in tfilaMenu" :key="tfila.title">   <span  @click="getSubTitle(tfila.title)" style="cursor: pointer;">    {{tfila.title}}  </span>    </div>  
-     
+
+      <router-link to="/flip-book">flip book</router-link>
+
+         <h1>{{ tfilaTitle }}</h1>
+
+      <menu-icon class="contain-menu-icon" @click="showMenu = !showMenu" />
+
+      <div v-if="showMenu" class="contain-menu" >
+
+       <span @click="returnToHomePage()" >דף הבית</span>
+       
+       <div v-for="(tfila,i) in tfilaMenu" :key="i"> 
+
+           <a  :href="`#${tfila.page}`" @click="hiddenMenu()"  > {{tfila.title}}</a>
+
+       </div>  
       </div>
+    </div >
 
-
-    <pdf v-for="i in numPages" :key="i" :src="src" :page="i + start " > </pdf>
-    <!-- style="display: inline-block; width: 25%" -->
-  
-  </div>
+     <div class="contain-pdf" v-for="i in numPages" :key="i" :id="i+start" >
+          <pdf :src="src" :page="i+start"  > </pdf>
+     </div>
+ </div>
+ 
 </template>
 
 <script lang="ts">
@@ -22,6 +34,7 @@ import Vue from "vue";
 import pdf from "vue-pdf";
 import tfilaData from "../assets/tfila.json";
 import MenuIcon from "vue-material-design-icons/Menu.vue";
+import Flipbook from "flipbook-vue";
 
 export default Vue.extend({
   name: "Tfila",
@@ -29,6 +42,7 @@ export default Vue.extend({
   components: {
     pdf,
     MenuIcon,
+    Flipbook
   },
   data() {
     return {
@@ -46,13 +60,30 @@ export default Vue.extend({
     console.log("destory");
   },
   methods: {
-    getSubTitle(subTitle:string)
+    
+    hiddenMenu()
     {
-      // alert(subTitle)
-     let pageStart=Number(this.selectTfila?.subTitels?.find(f=>f.title==subTitle)?.page)
-     this.start=pageStart
-    //  alert(pageStart)
-    }
+      this.start=0
+      this.showMenu=!this.showMenu       
+    },
+
+    returnToHomePage(): void
+    {
+        this.$router.push({
+            name: 'Home',
+                    
+        });
+    },
+
+    getSubTitle(id:number)
+    {    
+     
+      let pageStart=Number(this.selectTfila?.subTitels?.find(f=>f.id==id)?.page)
+     if(pageStart)
+         this.$router.push('#'+pageStart);
+    
+         this.showMenu = !this.showMenu
+     }
   },
   mounted(): void {
 
@@ -60,33 +91,59 @@ export default Vue.extend({
 
     // const test = this.$store.getters.getPdfSrc
     // console.log(test);
-    
-    console.log("from mounted " + this.tfilaTitle);
 
-
-    console.log("tfila " + this.selectTfila);
-
+   this.src.promise.then((pdf: { numPages: undefined; }): void => {
     this.end = Number(this.selectTfila?.pages.end);
     this.start = Number(this.selectTfila?.pages.start);
-    this.numPages = Number(this.end) - Number(this.start);
-    console.log("from mounted start " + this.start);
-    console.log("from mounted end " + this.end);
-
-    console.log("from mounted num pages " + this.numPages);
-
-    // this.src.promise.then((pdf: { numPages: undefined; }): void => {
-
-    // });
+    this.numPages =this.end-this.start;
+    });
   },
 });
 </script>
 
-<style>
-#hello {
-  background-color: rgb(154, 149, 149);
-  margin: 0 auto;
-  /* width: 20%; */
-  padding: 30px;
+<style scoped>
+ 
+
+ .header{
+  background-color:bisque; 
+  width: 100%;
+  position:fixed; 
+  top: 0;
+  z-index:1000;
+  
 }
 
+.header h1{
+  display: inline-block;
+  z-index:1000;
+}
+
+.contain-menu-icon{
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  left: 350px;
+}
+
+.contain-menu{
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+  left: 400px;
+ 
+}
+
+.contain-menu span{
+  font-size: large;
+}
+
+.contain-pdf{
+  background-color: darkgrey;
+
+} 
+
+
+a{
+  text-decoration: none;
+}
 </style>

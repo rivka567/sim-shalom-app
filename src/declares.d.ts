@@ -1,2 +1,3 @@
 declare module 'vue-pdf'
-declare module './views/HomePage'
+declare module 'flipbook-vue'
+declare module 'vue-images/dist/vue-images'

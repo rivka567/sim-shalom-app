@@ -1,4 +1,4 @@
-<template>
+<template style="height: 100%;">
   <div id="app">
      <!-- <Home/> -->
     <!-- <pdf src="sidur.pdf" :page="54"/> -->
@@ -24,6 +24,8 @@ export default{
 
 
 <style lang="scss">
+
+
 body{
   margin: 0;
 }
@@ -33,6 +35,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
 }
 
 #nav {
@@ -47,4 +50,7 @@ body{
     }
   }
 }
+
+
+
 </style>
